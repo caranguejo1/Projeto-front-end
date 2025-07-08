@@ -17,7 +17,7 @@
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./assets/moon-stars.svg);
+  --switch-bg-url: url(./assets/moon-stars.png);
 }
 
 .light {
@@ -25,7 +25,7 @@
   --text-color: black;
   --bg-url: url(./assets/bg-mobile-light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
-  --surface-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
   --switch-bg-url: url(./assets/sun.svg);
@@ -45,6 +45,7 @@ body {
   background: url(./assets/bg-mobile.jpg) no-repeat top center / cover;
   O nome disso é shorthand, que é uma forma mais curta de escrever várias propriedades CSS em uma única linha.
   */
+  height: 100vh;
 }
 
 body * {
@@ -54,8 +55,9 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
   /* Isto serve para definir a largura do container */
+  max-width: 588px;
   margin-top: 56px;
   margin-right: auto;
   margin-bottom: auto;
@@ -113,13 +115,15 @@ body * {
   z-index: 1;
   /* Isto serve para definir a ordem de empilhamento do botão do switch em relação aos outros elementos da página */
   transform: translateY(-50%);
+  animation: slide-back 0.2s;
 }
 
 .light #switch button {
-  /* O seletor .light #switch button seleciona o botão do switch quando a classe light está presente no elemento pai */
-  right: 0;
-  left: initial;
-  /* Isto serve para dizer que a posição inicial deve ser a esquerda */
+  animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -159,6 +163,7 @@ ul li a {
   /* Isto serve para definir o raio da borda do item da lista */
   backdrop-filter: blur(4px);
   /* Isto serve para aplicar um desfoque ao fundo do item da lista */
+  -webkit-backdrop-filter: blur(4px);
   text-decoration: none;
   /* Isto serve para remover o sublinhado do link */
   /* 
@@ -208,4 +213,35 @@ footer {
   text-align: center;
   padding: 24px 0;
   font-size: 14px;
+}
+
+/* media queries */
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
