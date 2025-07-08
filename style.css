@@ -1,0 +1,211 @@
+* {
+  /* O asterisco (*) é um seletor universal que seleciona todos os elementos da página */
+  margin: 0;
+  /* Isto serve para remover as margens de todos os elementos da página */
+  padding: 0;
+  /* Isto serve para remover as margens e o preenchimento de todos os elementos da página */
+  box-sizing: border-box;
+  /* Isto serve para definir que o tamanho dos elementos deve incluir o preenchimento e a borda */
+}
+
+:root {
+  /* O :root é um seletor que seleciona o elemento raiz do documento, que é o elemento <html> */
+  --text-color: white;
+  /* Isto serve para definir uma variável CSS chamada text-color com o valor white */
+  --bg-url: url(./assets/bg-desktop.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  /* O seletor .light seleciona todos os elementos com a classe light */
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.5);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  background: var(--bg-url);
+  /* Isto serve para definir a imagem de fundo da página */
+  background-repeat: no-repeat;
+  /* Isto serve para definir que a imagem de fundo não deve ser repetida */
+  background-position: top center;
+  /* Isto serve para definir que a imagem de fundo deve ser posicionada no topo e centralizada */
+  background-size: cover;
+  /* Isto serve para definir que a imagem de fundo deve cobrir toda a área da página */
+  /* 
+  Posso escrever tudo isso em uma única linha: 
+  background: url(./assets/bg-mobile.jpg) no-repeat top center / cover;
+  O nome disso é shorthand, que é uma forma mais curta de escrever várias propriedades CSS em uma única linha.
+  */
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  /* Isto serve para definir a fonte de todos os elementos da página */
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /* Isto serve para definir a largura do container */
+  margin-top: 56px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  /* 
+  Posso escrever tudo isso em uma única linha: 
+  margin-top: 56px auto auto auto;
+  Também posso escrever a propriedade auto como "0" para remover as margens de cima e de baixo.
+  Ficando assim:
+  margin: 56px 0 0 0;
+  */
+  padding: 0 24px;
+}
+
+/* Profile */
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  /* Isto serve para definir o peso da fonte do parágrafo */
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* display: none é uma propriedade que oculta um elemento na página */
+/* height: é uma propriedade que define a altura do elemento na página */
+
+/* Switch */
+
+#switch {
+  position: relative;
+  /* Isto serve para posicionar o switch de forma relativa em relação ao seu elemento pai */
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  /* Isto serve para posicionar o botão do switch de forma absoluta em relação ao seu elemento pai */
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  /* Isto serve para definir a ordem de empilhamento do botão do switch em relação aos outros elementos da página */
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  /* O seletor .light #switch button seleciona o botão do switch quando a classe light está presente no elemento pai */
+  right: 0;
+  left: initial;
+  /* Isto serve para dizer que a posição inicial deve ser a esquerda */
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* Isto serve para aplicar um desfoque ao fundo do switch, porém em navegadores mais antigos */
+  border-radius: 9999px;
+}
+
+/* Links */
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* Isto serve para definir que a lista deve ser exibida como uma coluna */
+  gap: 16px;
+  /* Isto serve para definir o espaçamento entre os itens da lista */
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  justify-content: center;
+  /* Isto serve para centralizar o conteúdo do item da lista */
+  align-items: center;
+  /* Isto serve para alinhar o conteúdo do item da lista verticalmente */
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  /* Isto serve para definir o raio da borda do item da lista */
+  backdrop-filter: blur(4px);
+  /* Isto serve para aplicar um desfoque ao fundo do item da lista */
+  text-decoration: none;
+  /* Isto serve para remover o sublinhado do link */
+  /* 
+  Existe também:
+  text-decoration: line-through
+  Para adicionar um risco ao meio do link,
+  text-decoration: overline
+  Para adicionar um risco na parte de cima do link.
+  text-decoration: underline
+  Para adicionar um sublinhado abaixo do link.
+  */
+  font-weight: 500;
+  /* Posso escrever isso também como font-weight: bold */
+  transition: background 0.2s;
+}
+
+ul li a:hover {
+  /* Isto serve para aplicar um efeito quando o mouse passa por cima do item da lista */
+  /* Isto é o que chamamos de pseudo-selector */
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* Social links */
+
+#social-links {
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
