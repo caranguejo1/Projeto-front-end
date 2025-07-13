@@ -16,8 +16,8 @@ function toggleMode() {
 
   if (html.classList.contains("light")) {
     // Se a classe 'light' estiver presente, vamos trocar a imagem para a versão clara
-    img.setAttribute("src", "./assets/avatar-light.png")
+    img.setAttribute("src", "./assets/viccenzo-claro.png")
   } else {
-    img.setAttribute("src", "./assets/avatar.png")
+    img.setAttribute("src", "./assets/viccenzo-escuro.png")
   }
 }
